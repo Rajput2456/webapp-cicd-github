@@ -95,7 +95,7 @@ The app will be available at:
 ## 🌐 Live Demo
 
 Your app is live at:  
-🔗 [http://mywebappstuti-czekfq...azurewebsites.net](http://mywebappstuti-czekfq2ffaehwb0.westeurope-01.azurewebsites.net)
+🔗 https://mywebappstuti-czekfqe2ffaehwb0.westeurope-01.azurewebsites.net/
 
 > ⚠️ Use **HTTP**, not HTTPS  
 > 🕵️‍♂️ Open in **Incognito Mode** to avoid forced HTTPS redirection
