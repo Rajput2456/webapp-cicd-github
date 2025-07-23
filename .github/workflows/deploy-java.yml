@@ -23,7 +23,7 @@ jobs:
         run: mvn clean install
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: spring-boot-app
           path: target/*.jar
@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: mywebapp-Stuti123   # 👈 Change this to your Azure Web App name
+          app-name: mywebapp-Stuti123
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: target/*.jar
