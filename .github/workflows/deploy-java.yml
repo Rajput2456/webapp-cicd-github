@@ -34,4 +34,3 @@ jobs:
           app-name: mywebapp-Stuti123   # 👈 Change this to your Azure Web App name
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: target/*.jar
-
