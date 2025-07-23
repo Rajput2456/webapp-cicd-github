@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: mywebapp-Stuti123
+          app-name: mywebappStuti  # ✅ Correct name from Azure
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: target/HelloBankingApp-1.0.0.jar
