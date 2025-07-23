@@ -23,14 +23,15 @@ jobs:
         run: mvn clean install
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4  # ✅ Use only v4
+        uses: actions/upload-artifact@v3
         with:
           name: spring-boot-app
-          path: target/*.jar
+          path: target/HelloBankingApp-1.0.0.jar
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: mywebapp-Stuti123      # ✅ Only once
+          app-name: mywebapp-Stuti123
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: target/*.jar
+          package: target/HelloBankingApp-1.0.0.jar
+
