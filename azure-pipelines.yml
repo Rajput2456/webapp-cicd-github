@@ -1,0 +1,16 @@
+trigger:
+- main
+
+variables:
+  environment: 'Production'
+  buildConfiguration: 'Release'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo "Deploying to environment: $(environment)"
+  displayName: 'Show Environment'
+
+- script: echo "Build configuration is: $(buildConfiguration)"
+  displayName: 'Show Build Config'
