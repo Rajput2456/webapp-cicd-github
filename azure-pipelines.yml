@@ -9,8 +9,27 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo "Deploying to environment: $(environment)"
-  displayName: 'Show Environment'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "✅ Deploying to environment: $(environment)"
+      echo "⚙️ Build configuration is: $(buildConfiguration)"
 
-- script: echo "Build configuration is: $(buildConfiguration)"
-  displayName: 'Show Build Config'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    echo "🔨 Running build..."
+    npm install
+    npm run build
+  displayName: 'Build Application'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
