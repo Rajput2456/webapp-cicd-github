@@ -2,34 +2,28 @@ trigger:
 - main
 
 variables:
-  environment: 'Production'
-  buildConfiguration: 'Release'
+  pythonVersion: '3.10'
+  appFolder: 'backend'
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Bash@3
+- task: UsePythonVersion@0
   inputs:
-    targetType: 'inline'
-    script: |
-      echo "✅ Deploying to environment: $(environment)"
-      echo "⚙️ Build configuration is: $(buildConfiguration)"
-
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+    versionSpec: '$(pythonVersion)'
+    addToPath: true
 
 - script: |
-    echo "🔨 Running build..."
-    npm install
-    npm run build
-  displayName: 'Build Application'
+    cd $(appFolder)
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    echo "✅ Flask app dependencies installed."
+  displayName: 'Install Python Dependencies'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-
+- script: |
+    cd $(appFolder)
+    echo "🚀 You can add Flask run/deploy script here"
+    # Example: python app.py
+  displayName: 'Run Flask App'
