@@ -1,0 +1,13 @@
+trigger:
+- main
+
+variables:
+- group: MyVars
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildApp
+    steps:
+    - script: echo "Environment is $(env)"
+    - script: echo "Connection string is $(connection)"
