@@ -1,0 +1,29 @@
+trigger:
+- main
+
+variables:
+  pythonVersion: '3.10'
+  appFolder: 'backend'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(pythonVersion)'
+    addToPath: true
+
+- script: |
+    cd $(appFolder)
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    echo "✅ Flask app dependencies installed."
+  displayName: 'Install Python Dependencies'
+
+- script: |
+    cd $(appFolder)
+    echo "🚀 You can add Flask run/deploy script here"
+    # Example: python app.py
+  displayName: 'Run Flask App'
