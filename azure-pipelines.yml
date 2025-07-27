@@ -1,0 +1,13 @@
+trigger:
+- main
+
+variables:
+- group: StutiVars 26 july
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildApp
+    steps:
+    - script: echo "Environment is $(env)"
+    - script: echo "Connection string is $(connection)"
